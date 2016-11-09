@@ -1,0 +1,79 @@
+Avaliacao 2
+	Algebra Relacional
+		O que é
+			Conjunto de principios matematicos que formam  a base da manipulação de
+			conteúdos em tabelas relacionais
+		Características
+			Com base nos princípios, é possível definir um conjunto de operações 
+			algébricas que operam sobre tabelas
+			O resultado de uma recuperação é uma nova relação, que pode ter sido
+			formada por uma ou mais relações
+		Importância
+			Representa um alicerce formal para as operações do modelo relacional
+			Os seus conceitos são incorporados na linguagem de consulta padrão SQL
+			para SGBDs Relacionais.
+		Conceitos envolvidos 
+			Relação - representada por uma tabela bidimensional
+			Grau da relação - numero de atributos da relação
+			Tupla - corresponde a uma linha na relação
+			Atributo - corresponde a uma coluna na relação
+			Chave primária - atributo que identifica unicamente uma linha
+			Chave estrangeira - atributo de uma relação que é chave primaria de 
+			outra relação
+		Operações
+			Seleção
+				Seleciona tuplas específicas de uma relação específica por meio de um predicado que satisfaça 
+				O grau da relação resultante é igual ao da relação original
+			Projection
+				O grau da relação resultante é menor ou igual ao da relação original
+				O numero de tuplas da relação resultante  é igual ao da relação original
+			
+			Uniao
+				Constrói uma relação consistindo em todas as tuplas que aparecem nas relações 
+				específicas
+				Elimina tuplas duplicadas
+				Deve possuir o mesmo numero de colunas e cada par de colunas devem possuir o mesmo
+				tipo de dominio
+			Diferença de conjuntos
+				Permite encontrar tuplas que estejam em uma relação mas não em outra
+				Deve possuir o mesmo numero de colunas e cada par de colunas devem possuir o mesmo
+				tipo de dominio
+			Produto cartesiano
+				Produz uma nova relação combinando cada tupla de uma relação com cada tupla
+				de outra relação.
+			Interseção 
+				Encontra tuplas que constam  em ambos os pares das relações envolvidas
+			Renomeação
+				Usado para nomear relações e atributos temporariamente
+				Simbologia: letra grega ro
+				Uso: ro NovoNome <- atributo
+				ro NovoNome (relação)
+			Atribuição
+				O objetivo do operador de atribuição (assignment) é
+				atribuir o resultado de uma operação a uma nova relação.
+				Útil para desmembrar uma sequência de operações e
+				especificar relações de resultado intermediário.
+				Simbologia: <-
+				No relax é: =
+	SQL
+		DDL
+			DATA DEFINITION LANGUAGE - são usadas para definir a estrutura de
+			banco de dados ou esquema.
+			Exemplos: create database, alter table, comment.
+			
+		DML 
+			Data Manipulation Language - São usadas para o gerenciamento de dados
+			dentro de objetos do banco
+			Exemplos: Select, insert, delete
+			
+		Teste de membro de conjuntos
+			[NOT] IN 
+				Comparação de conjuntos
+			ALL
+				TODOS
+			ANY
+				UM OU MAIS
+			[NOT] EXISTS
+				TESTE DE RELAÇÕES VAZIAS
+		
+
