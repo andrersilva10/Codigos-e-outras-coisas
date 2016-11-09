@@ -75,5 +75,7 @@ Avaliacao 2
 				UM OU MAIS
 			[NOT] EXISTS
 				TESTE DE RELAÇÕES VAZIAS
-		
+		having
+			aplicacao de condições sobre grupos
+			
 
