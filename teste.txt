@@ -1,4 +1,4 @@
-Avaliacao 2
+﻿Avaliacao 2
 	Algebra Relacional
 		O que é
 			Conjunto de principios matematicos que formam  a base da manipulação de
@@ -78,5 +78,5 @@ Avaliacao 2
 		having
 			aplicacao de condições sobre grupos
 			OI AMIGUINHO
-			
+			Teste 1
 
