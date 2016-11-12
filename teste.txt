@@ -77,9 +77,4 @@
 				TESTE DE RELAÇÕES VAZIAS
 		having
 			aplicacao de condições sobre grupos
-			OI AMIGUINHO
-			Teste 02
-
-			Teste 1
- 
 
