@@ -6,6 +6,7 @@ int maior(int);
 int menor(int);
 int entre5e8(int);
 int contaPares(int);
+void olaMundo();
 int main(int argc, char *argv[]) {
 	long long a = INT_MIN ;
 	printf("%d",a);
