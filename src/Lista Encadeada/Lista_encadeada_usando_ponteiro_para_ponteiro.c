@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct lista{
+	int info;
+	struct lista *prox;
+}typedef Lista;
+
+
+void inserir(Lista**,int);
+void exibir(Lista*);
+
+int main(){
+	Lista *l = NULL;
+	int i;
+	for(i=0;i<7;i++){
+		inserir(&l,rand()%10);
+	}
+	exibir(l);
+}
+
+void inserir(Lista **pp, int info){
+	if(*(pp) == NULL){
+		*(pp) = (Lista*)malloc(sizeof(Lista));
+		(*pp)->info = info;
+		(*pp)->prox = NULL;
+	}else{
+		Lista *aux2 = *pp;
+		while(1){
+			if(aux2->prox == NULL){
+				aux2->prox = (Lista*)malloc(sizeof(Lista));
+				aux2->prox->info = info;
+				aux2->prox->prox = NULL;
+				break;
+			}
+			aux2 = aux2->prox;
+		}
+	}
+}
+
+void exibir(Lista* l){
+	if(l==NULL) return;
+	while(1){
+		printf("%d\t",l->info);
+		l = l->prox;
+		if(l == NULL) break;
+	}
+}
