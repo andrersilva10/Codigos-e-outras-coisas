@@ -9,13 +9,16 @@ struct lista{
 
 void inserir(Lista**,int);
 void exibir(Lista*);
-
+Lista* inverteLista(Lista *l);
 int main(){
 	Lista *l = NULL;
 	int i;
-	for(i=0;i<7;i++){
-		inserir(&l,rand()%10);
+	for(i=0;i<5;i++){
+		inserir(&l,rand()%15);
 	}
+	exibir(l);
+	printf("\n");
+	l = inverteLista(l);
 	exibir(l);
 }
 
@@ -44,5 +47,21 @@ void exibir(Lista* l){
 		printf("%d\t",l->info);
 		l = l->prox;
 		if(l == NULL) break;
+	}
+}
+Lista* inverteLista(Lista *l){
+	if(l->prox == NULL)
+		return l;
+	else{
+		Lista* aux = inverteLista(l->prox);
+		
+		//procura o ultimo elemento da lista
+		Lista* aux1 = aux;
+		while(aux1->prox != NULL){
+			aux1 = aux1->prox;
+		}
+		l->prox = NULL;
+		aux1->prox = l;
+		return aux;
 	}
 }
