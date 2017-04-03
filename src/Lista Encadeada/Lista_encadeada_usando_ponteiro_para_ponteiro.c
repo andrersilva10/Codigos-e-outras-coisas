@@ -6,10 +6,11 @@ struct lista{
 	struct lista *prox;
 }typedef Lista;
 
-
+int tamanhoLista(Lista*);
 void inserir(Lista**,int);
 void exibir(Lista*);
 Lista* inverteLista(Lista *l);
+void excluirElemento(Lista**,int posicao);
 int main(){
 	Lista *l = NULL;
 	int i;
@@ -18,7 +19,9 @@ int main(){
 	}
 	exibir(l);
 	printf("\n");
-	l = inverteLista(l);
+	//l = inverteLista(l);
+	scanf("%d",&i);
+	excluirElemento(&l,i);
 	exibir(l);
 }
 
@@ -64,4 +67,50 @@ Lista* inverteLista(Lista *l){
 		aux1->prox = l;
 		return aux;
 	}
+}
+
+void excluirElemento(Lista** l,int posicao){
+	if(*(l)!=NULL){
+		Lista *aux;
+		int i = 0;
+		if(posicao==0){
+			aux = (*l)->prox;
+			free((*l));
+			*l = aux;
+			
+		}else if(posicao < (tamanhoLista((*l)) - 1)){
+			aux = *l;
+			while(i<posicao-1){
+				aux = aux->prox;
+				i++;
+			}
+			Lista *aux2 = aux->prox;
+			aux->prox = aux->prox->prox;
+			free(aux2);
+		}else{
+			aux = (*l);
+			Lista *aux2 = aux;
+			while(aux->prox->prox != NULL){
+				aux = aux->prox;
+				aux2 = aux2->prox;
+			}
+			aux2 = aux2->prox;
+			free(aux2);
+			aux->prox = NULL;
+		}
+	}
+}
+
+
+int tamanhoLista(Lista* l){
+	int i = 0;
+	Lista* aux = l;
+	if(aux == NULL){
+		return 0;
+	}
+	while(aux->prox != NULL){
+		aux = aux->prox;
+		i++;
+	}
+	return i;
 }
