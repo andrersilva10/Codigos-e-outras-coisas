@@ -26,11 +26,11 @@ int main(int argc, char *argv[]) {
 	
 	
 	inserirNoFinalCirc(&l,1);
-	inserirNoFinalCirc(&l,2);
+	/*inserirNoFinalCirc(&l,2);
 	inserirNoFinalCirc(&l,3);
 	inserirNoFinalCirc(&l,4);
-	inserirNoFinalCirc(&l,5);
-	removerNoCirc(&l,4);
+	inserirNoFinalCirc(&l,5);*/
+	removerNoCirc(&l,0);
 	imprimirListaCirc(l);
 	return 0;
 }
@@ -83,8 +83,8 @@ void removerNoCirc(Lista** l, int posicao){
 	if((*l) != NULL){
 		int i = 0;
 		Lista* aux = (*l);
-		Lista* aux2 = (*l);
-		if(posicao == 0){
+		Lista* aux2;
+		if(posicao == 0 && tamanhoLista(aux)>1){//excluir primeiro elemento de uma lista cheia
 
 			while(aux->prox != (*l)){
 				aux=aux->prox;
@@ -92,28 +92,38 @@ void removerNoCirc(Lista** l, int posicao){
 			aux->prox = (*l)->prox;
 			(*l) = (*l)->prox;
 			free(aux2);
-		}else if(posicao < (tamanhoLista((*l)) - 1)){
-			while(i < posicao -1){
+		}else if(posicao == tamanhoLista(aux) - 1 && tamanhoLista(aux)>1){//excluir ultimo elemento de uma lista cheia
+			while(aux->prox->prox!=(*l)){
+				aux = aux->prox;
+			}
+			aux2 = aux->prox;
+			aux->prox = (*l);
+			free(aux2);
+		}else if(posicao > 0 && tamanhoLista((*l)) > 1){ //excluir elemento do 'meio' de uma lista cheia
+			while(i < posicao - 1){
 				aux = aux->prox;
 				i++;
 			}
 			aux2 = aux->prox;
-			printf("%d\n aaaaa",aux2->info);
-			aux = aux->prox->prox;
+			aux->prox = aux2->prox;
 			free(aux2);
+		}else{//excluir elemento de uma lista com um elemento somente
+			free((*l));
+			(*l) = NULL;
 		}
 	}
 }
 int tamanhoLista(Lista* l){
-	int i = 0;
+	
 	Lista* aux = l;
 	if(aux == NULL){
 		return 0;
 	}
-	while(aux->prox != l){
+	int i = 0;
+	do{
 		aux = aux->prox;
 		i++;
-	}
+	}while(aux != l);
 	return i;
 }
 
