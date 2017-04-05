@@ -8,41 +8,43 @@ struct lista2{
 }typedef Lista2;
 
 
-Lista2* inserirFinal(Lista2*,int);
+void inserirFinal(Lista2**,int);
 void exibir(Lista2*);
 int main(){
 	
 	Lista2 *l = NULL;
-	l = inserirFinal(l,1);
-	printf("%d",l->info);
-	l = inserirFinal(l,2);
-	l = inserirFinal(l,3);
-	l = inserirFinal(l,4);
-	l = inserirFinal(l,5);
+	inserirFinal(&l,2);
+	inserirFinal(&l,2);
+	inserirFinal(&l,5);
+	inserirFinal(&l,2);
+	inserirFinal(&l,2);
 	exibir(l);
 	return 0;
 }
 
-Lista2* inserirFinal(Lista2* l, int v){
+void inserirFinal(Lista2** l, int v){
 	Lista2* n = (Lista2*)malloc(sizeof(Lista2));
-	Lista2 *p = l;
-	if(l!=NULL){
-		while(p->prox != NULL)
-			p = p->prox;
-		p->prox = n;
-	}
-	n->ant = p;
 	n->prox = NULL;
 	n->info = v;
-	if(l=NULL)
-		return n;
-	else
-		return l;
+	if((*l)!=NULL){
+		Lista2 *p = (*l);
+		while(p->prox != NULL){
+			p = p->prox;
+		}
+		p->prox = n;
+		n->ant = p;
+	}else{
+		n->ant = NULL;
+		(*l) = n;
+	}
+
+
 }
 void exibir(Lista2 *l){
 	Lista2 *aux = l;
-	while(aux != NULL){
-		printf("%d\t",aux->info);
-		aux = aux->prox;
+	while(1){
+		printf("%d\t",l->info);
+		l = l->prox;
+		if(l == NULL) break;
 	}
 }

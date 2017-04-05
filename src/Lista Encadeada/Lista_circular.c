@@ -85,7 +85,6 @@ void removerNoCirc(Lista** l, int posicao){
 		Lista* aux = (*l);
 		Lista* aux2;
 		if(posicao == 0 && tamanhoLista(aux)>1){//excluir primeiro elemento de uma lista cheia
-
 			while(aux->prox != (*l)){
 				aux=aux->prox;
 			}
@@ -99,7 +98,7 @@ void removerNoCirc(Lista** l, int posicao){
 			aux2 = aux->prox;
 			aux->prox = (*l);
 			free(aux2);
-		}else if(posicao > 0 && tamanhoLista((*l)) > 1){ //excluir elemento do 'meio' de uma lista cheia
+		}else if(posicao > 0 && tamanhoLista(aux) > 1){ //excluir elemento do 'meio' de uma lista cheia
 			while(i < posicao - 1){
 				aux = aux->prox;
 				i++;
