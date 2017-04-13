@@ -8,11 +8,14 @@ struct lista{
 
 int tamanhoLista(Lista*);
 void inserir(Lista**,int);
+void inserirOrdenado(Lista**,int);
 void exibir(Lista*);
 Lista* inverteLista(Lista *l);
 void excluirElemento(Lista**,int posicao);
 int main(){
+	
 	Lista *l = NULL;
+	/*
 	int i;
 	for(i=0;i<5;i++){
 		inserir(&l,rand()%15);
@@ -22,6 +25,13 @@ int main(){
 	//l = inverteLista(l);
 	scanf("%d",&i);
 	excluirElemento(&l,i);
+	exibir(l);
+	*/
+	srand(time(NULL));
+	int i;
+	for(i = 0;i<10;i++){
+		inserirOrdenado(&l,rand()%15);
+	}
 	exibir(l);
 }
 
@@ -114,3 +124,32 @@ int tamanhoLista(Lista* l){
 	}
 	return i;
 }
+void inserirOrdenado(Lista** l, int info){
+	Lista* aux = (Lista*)malloc(sizeof(Lista));
+	aux->prox = NULL;
+	aux->info = info;
+	Lista *aux2 = NULL;
+	if((*l) == NULL){
+		(*l) = aux;
+	}else{
+		aux2 = (*l);
+		Lista* ant = NULL;
+		while(aux2 != NULL){//percorre a lista até achar um numero maior que info
+			if(info < aux2->info){
+				break;
+			}
+			ant = aux2;
+			aux2 = aux2->prox;
+		}
+		if(ant == NULL){//inserir no começo
+			aux->prox = (*l);
+			(*l) = aux;
+		}else if(ant != NULL && aux2 != NULL){//inserir no meio
+			ant->prox = aux;
+			aux->prox = aux2;
+		}else if(aux2 == NULL){//inserir no final
+			ant->prox = aux;
+		}
+	}
+}
+
